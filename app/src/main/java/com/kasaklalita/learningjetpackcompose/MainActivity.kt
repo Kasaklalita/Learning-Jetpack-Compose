@@ -31,6 +31,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kasaklalita.learningjetpackcompose.ui.theme.Gray100
 import com.kasaklalita.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,15 +40,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             LazyRow(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxSize()
+                modifier = Modifier.fillMaxWidth().background(Gray100)
             ) {
-                itemsIndexed(listOf("item 1", "item 2", "End", "Finish")) { index, item ->
-                    Text(
-                        text = "Item $index, $item",
-                        fontSize = 30.sp,
-                        modifier = Modifier.padding(horizontal = 10.dp)
+                itemsIndexed(
+                    listOf(
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 1"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 2"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 3"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 4"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 5"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 6"),
                     )
+                ) { index, item ->
+                    ItemRow(item = item)
                 }
             }
         }
