@@ -38,18 +38,23 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LazyRow(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().background(Gray100)
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Gray100)
             ) {
                 itemsIndexed(
                     listOf(
-                        ItemRowModel(R.drawable.ibishopi, "Kasak 1"),
-                        ItemRowModel(R.drawable.ibishopi, "Kasak 2"),
-                        ItemRowModel(R.drawable.ibishopi, "Kasak 3"),
-                        ItemRowModel(R.drawable.ibishopi, "Kasak 4"),
-                        ItemRowModel(R.drawable.ibishopi, "Kasak 5"),
-                        ItemRowModel(R.drawable.ibishopi, "Kasak 6"),
+                        ItemRowModel(
+                            R.drawable.ibishopi,
+                            "Kasak 1",
+                            content = "Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1Content 1"
+                        ),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 1", content = "Content 1"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 1", content = "Content 1"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 1", content = "Content 1"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 1", content = "Content 1"),
+                        ItemRowModel(R.drawable.ibishopi, "Kasak 1", content = "Content 1"),
                     )
                 ) { index, item ->
                     ItemRow(item = item)
