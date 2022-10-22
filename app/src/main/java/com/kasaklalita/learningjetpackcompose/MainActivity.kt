@@ -8,6 +8,9 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -34,8 +37,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircleItem()
+            LazyRow(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
+                itemsIndexed(listOf("item 1", "item 2", "End", "Finish")) { index, item ->
+                    Text(
+                        text = "Item $index, $item",
+                        fontSize = 30.sp,
+                        modifier = Modifier.padding(horizontal = 10.dp)
+                    )
+                }
             }
         }
     }
@@ -51,7 +64,7 @@ private fun CircleItem() {
             .size(100.dp)
             .background(color = color.value, shape = CircleShape)
             .clickable {
-                when(++counter.value) {
+                when (++counter.value) {
                     10 -> color.value = Color.Red
                     20 -> color.value = Color.Green
                 }
